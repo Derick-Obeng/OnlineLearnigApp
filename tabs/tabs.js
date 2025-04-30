@@ -8,11 +8,13 @@ import SearchScreen from '../screens/SearchScreen';
 import CourseScreen from '../screens/CourseScreen';
 import MessageScreen from '../screens/MessageScreen';
 import AccountScreen from '../screens/AccountScreen';
+import Colors from '../constants/Colors';
+import { useTheme } from '@react-navigation/native';
 
 
 
 const TabArr = [
-    { route: 'Home', label: 'Home', type: Icons.Feather, icon: 'home', component: HomeScreen },
+    { route: 'Home', label: 'Home', type: Icons.Octicons, icon: 'home', component: HomeScreen },
     { route: 'Course', label: 'Course', type: Icons.FontAwesome, icon: 'book', component: CourseScreen },
     { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: SearchScreen },
     { route: 'Message', label: 'Message', type: Icons.MaterialCommunityIcons, icon: 'message-text-outline', component: MessageScreen },
@@ -33,6 +35,8 @@ const TabButton = (props) => {
     const viewRef = useRef(null);
     const circleRef = useRef(null);
     const textRef = useRef(null);
+    const { colors } = useTheme()
+    const bgColor = colors.background;
     
   
     useEffect(() => {
@@ -48,25 +52,13 @@ const TabButton = (props) => {
     }, [focused])
   
     return (
-      <TouchableOpacity
-        onPress={onPress}
-        activeOpacity={1}
-        style={styles.container}>
-        <Animatable.View
-          ref={viewRef}
-          duration={1000}
-          style={styles.container}>
-          <View style={[styles.btn]}>
-            <Animatable.View
-              ref={circleRef}
-              style={styles.circle} />
-            <Icon type={item.type} name={item.icon}  />
+      <TouchableOpacity onPress={onPress} activeOpacity={1} style={styles.container}>
+        <Animatable.View ref={viewRef} duration={1000} style={styles.container}>
+          <View style={[styles.btn, { borderColor: bgColor, backgroundColor: bgColor }]}>
+            <Animatable.View ref={circleRef} style={styles.circle} />
+            <Icon type={item.type} name={item.icon} color={focused ? Colors.white : Colors.primary}/>
           </View>
-          <Animatable.Text
-            ref={textRef}
-            style={[styles.text]}>
-            {item.label}
-          </Animatable.Text>
+          <Animatable.Text ref={textRef} style={[styles.text]}> {item.label} </Animatable.Text>
         </Animatable.View>
       </TouchableOpacity>
     )
@@ -116,8 +108,8 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 25,
         borderWidth: 4,
-        borderColor: 'grey',
-        backgroundColor: 'white',
+        borderColor: Colors.white,
+        backgroundColor: Colors.white,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -125,13 +117,13 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: Colors.primary,
         borderRadius: 25,
     },
     text: {
         fontSize: 12,
         textAlign: 'center',
-        color: 'black',
+        color: Colors.primary,
         fontWeight: '500'
     }
 })

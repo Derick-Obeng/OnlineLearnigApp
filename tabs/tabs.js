@@ -64,7 +64,9 @@ const TabButton = (props) => {
     )
   }
 
-const Tabs = () => {
+
+
+    const Tabs = () => {
   return (
    <View style={{ flex: 1 }}>
         <Tab.Navigator screenOptions={{ 

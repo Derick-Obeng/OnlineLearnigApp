@@ -10,6 +10,8 @@ import MessageScreen from '../screens/MessageScreen';
 import AccountScreen from '../screens/AccountScreen';
 import Colors from '../constants/Colors';
 import { useTheme } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import OnboardingScreen from '../screens/OnboardingScreen';
 
 
 
@@ -22,6 +24,7 @@ const TabArr = [
 ];
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const animate1 = { 0: { scale: .5, translateY: 7 }, .92: { translateY: -34 }, 1: { scale: 1.2, translateY: -24 } }
 const animate2 = { 0: { scale: 1.2, translateY: -24 }, 1: { scale: 1, translateY: 7 } }
@@ -62,11 +65,18 @@ const TabButton = (props) => {
         </Animatable.View>
       </TouchableOpacity>
     )
-  }
+}
 
+function RootStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+            <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
+        </Stack.Navigator>
+    )
+}
 
-
-    const Tabs = () => {
+function Tabs() {
   return (
    <View style={{ flex: 1 }}>
         <Tab.Navigator screenOptions={{ 
@@ -90,7 +100,7 @@ const TabButton = (props) => {
   )
 }
 
-export default Tabs
+export default RootStack
 
 const styles = StyleSheet.create({
     container: {

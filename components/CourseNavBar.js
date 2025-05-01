@@ -12,17 +12,20 @@ const Stack = createNativeStackNavigator();
 
 const Navbar = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="All"
-      screenOptions={{
-        animation: 'slide_from_right', // For horizontal slide transition
-        header: ({ navigation }) => <ButtonNavigator navigation={navigation} />,
-      }}
-    >
-      <Stack.Screen name="All" component={All} />
-      <Stack.Screen name="New" component={New} />
-      <Stack.Screen name="Popular" component={Popular} />
-    </Stack.Navigator>
+    
+       
+      
+        <Stack.Navigator initialRouteName="All"  screenOptions={{
+          animation: 'slide_from_right', // For horizontal slide transition
+          header: ({ navigation }) => <ButtonNavigator navigation={navigation} />,
+        }}>
+      
+        <Stack.Screen name="All" component={All} />
+        <Stack.Screen name="New" component={New} />
+        <Stack.Screen name="Popular" component={Popular} />
+      </Stack.Navigator>
+      
+      
   );
 };
 

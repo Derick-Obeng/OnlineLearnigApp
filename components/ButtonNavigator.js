@@ -16,23 +16,24 @@ import { FlatList ,Image} from 'react-native-gesture-handler';
 
 
 const ButtonNavigator = ({ navigation }) => {
-  return (<View>
+  return (
+  <View>
     <View style={styles.row}>
      
-        <TouchableOpacity onPress={() => navigation.navigate('All')} style={styles.buts}>
-            <Text style={styles.text}>All</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('New')} style={styles.buts}>
-            <Text style={styles.text}>New</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Popular')} style={styles.buts}>
-            <Text style={styles.text}>Popular</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('All')} style={styles.buts}>
+        <Text style={styles.text}>All</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('New')} style={styles.buts}>
+        <Text style={styles.text}>New</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Popular')} style={styles.buts}>
+        <Text style={styles.text}>Popular</Text>
+      </TouchableOpacity>
         
     </View>
-
-
-    </View>
+  </View>
   );
 };
 

@@ -1,4 +1,4 @@
-import { View, Text,Image ,StyleSheet,FlatList,TouchableOpacity} from "react-native";
+import { View, Text,Image ,StyleSheet,TextInput,FlatList,ImageBackground, TouchableOpacity} from "react-native";
 
 
 const activities=[
@@ -31,32 +31,34 @@ const activities=[
 
 
 const Item = ({ title, image }) => (
-  <View style={styles.backgroundColor}>
+    <View style={styles.backgroundColor}>
     <Image source={image} style={styles.image} />
     <Text style={styles.text}>{title}</Text>
   </View>
-);
+
+  );
   
 
 
 const Activities = () => {
-  return ( 
-      <View style={styles.container}>
-        <FlatList 
-          data={activities}
-          keyExtractor={(item)=>item.id}
-          renderItem={({item})=>(
-          <TouchableOpacity >
-            <Item title={item.title} image={item.image}/>
-          </TouchableOpacity>
-          )}
-        horizontal/>
+    return ( <View style={styles.container}>
+<FlatList 
+data={activities}
+keyExtractor={(item)=>item.id}
+renderItem={({item})=>(
+  <TouchableOpacity >
+        <Item title={item.title} image={item.image}/>
 
-        <View>
-          <Text style={{fontSize:18, fontWeight:500, paddingTop:20, paddingBottom:20,marginLeft:20}}>Choose your course</Text>
-        </View>
-      </View> 
-    )
+  </TouchableOpacity>
+)}
+horizontal
+
+/>
+<Text style={{fontSize:18, fontWeight:500, paddingTop:20, paddingBottom:20,marginLeft:20}}>Chooce your course</Text>
+<View>
+    
+</View>
+    </View> );
 }
 
 

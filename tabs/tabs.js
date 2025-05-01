@@ -5,7 +5,6 @@ import Icon, { Icons } from '../components/Icons';
 import * as Animatable from 'react-native-animatable';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import CourseScreen from '../screens/CourseScreen';
 import MessageScreen from '../screens/MessageScreen';
 import AccountScreen from '../screens/AccountScreen';
 import Colors from '../constants/Colors';
@@ -17,7 +16,6 @@ import OnboardingScreen from '../screens/OnboardingScreen';
 
 const TabArr = [
     { route: 'Home', label: 'Home', type: Icons.Octicons, icon: 'home', component: HomeScreen },
-    { route: 'Course', label: 'Course', type: Icons.FontAwesome, icon: 'book', component: CourseScreen },
     { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: SearchScreen },
     { route: 'Message', label: 'Message', type: Icons.MaterialCommunityIcons, icon: 'message-text-outline', component: MessageScreen },
     { route: 'Account', label: 'Account', type: Icons.MaterialCommunityIcons, icon: 'account', component: AccountScreen },

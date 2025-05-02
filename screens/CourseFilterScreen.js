@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import Slider from '@react-native-community/slider';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const categories = ['Design', 'Painting', 'Coding', 'Music', 'Visual Identity', 'Mathematics'];
 const durations = ['3-8 Hours', '8-14 Hours', '14-20 Hours', '20-24 Hours', '24-30 Hours'];
@@ -47,7 +48,7 @@ export default function App() {
           <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
             {/* X Button */}
             <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-              <Text style={styles.closeText}>X</Text>
+            <EvilIcons name="close" size={24} color="black" />
             </TouchableOpacity>
 
             {/* Title */}
@@ -248,7 +249,7 @@ const styles = StyleSheet.create({
     clearButtonText: {
       color: '#000',
       fontSize: 16,
-      fontWeight: 'bold',
+      fontWeight: 'bold',
     },
   });
   

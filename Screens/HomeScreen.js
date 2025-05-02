@@ -1,16 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  useColorScheme,
+} from 'react-native';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
+  const scheme = useColorScheme();
+  const isDark = scheme === 'dark';
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, { backgroundColor: isDark ? '#121212' : '#ffffff' }]}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.profileSection}>
-          <View style={styles.profilePicPlaceholder}></View>
+          <Image source={require('../assets/Avatar.png')} style={styles.avatar} />
           <View>
-            <Text style={styles.greeting}>Hi, Kristin</Text>
-            <Text style={styles.subtext}>Let's start learning</Text>
+            <Text style={[styles.greeting, { color: isDark ? '#fff' : '#000' }]}>Hi, Kristin</Text>
+            <Text style={[styles.subtext, { color: isDark ? '#ccc' : '#444' }]}>Let's start learning</Text>
           </View>
         </View>
       </View>
@@ -26,29 +37,36 @@ export default function HomeScreen() {
 
       {/* What to learn card */}
       <TouchableOpacity style={styles.startCard}>
-        <View style={styles.illustrationPlaceholder}></View>
+        <Image source={require('../assets/illustration.png')} style={styles.cardImage} />
         <Text style={styles.cardTitle}>What do you want to learn today?</Text>
         <Text style={styles.getStarted}>Get Started</Text>
       </TouchableOpacity>
 
       {/* Learning Plan */}
       <View style={styles.learningPlan}>
-        <Text style={styles.sectionTitle}>Learning Plan</Text>
+        <Text style={[styles.sectionTitle, { color: isDark ? '#fff' : '#000' }]}>Learning Plan</Text>
+
         <View style={styles.planItemCard}>
           <Text style={styles.planText}>📦 Packaging Design</Text>
           <Text style={styles.planProgress}>40 / 48</Text>
         </View>
-        <View style={styles.planItemCard}>
+
+        <TouchableOpacity
+          style={styles.planItemCard}
+          onPress={() => navigation.navigate('ProductDesign')}
+        >
           <Text style={styles.planText}>🎨 Product Design</Text>
           <Text style={styles.planProgress}>6 / 24</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {/* Meetup Card */}
       <View style={styles.meetupCard}>
-        <View style={styles.illustrationPlaceholderSmall}></View>
+        <Image source={require('../assets/Group 136.png')} style={styles.meetupImage} />
         <Text style={styles.meetupTitle}>Meetup</Text>
-        <Text style={styles.meetupSubtitle}>Offline exchange of learning experience</Text>
+        <Text style={styles.meetupSubtitle}>
+          Offline exchange of learning experience
+        </Text>
       </View>
 
       {/* Bottom Navigation */}
@@ -66,125 +84,132 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    paddingTop: 40,
-    backgroundColor: '#fff',
+    padding: 16,
   },
-
-  // Header
-  header: { marginBottom: 20 },
-  profileSection: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  profilePicPlaceholder: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#ddd',
+  header: {
+    marginBottom: 20,
   },
-  greeting: { fontSize: 26, fontWeight: 'bold', color: '#1e1e1e' },
-  subtext: { fontSize: 15, color: '#888' },
-
-  // Progress
-  progressContainer: { marginTop: 10 },
-  progressLabel: { fontSize: 14, color: '#666' },
-  progressTime: { fontSize: 14, marginBottom: 5 },
+  profileSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    marginRight: 12,
+  },
+  greeting: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  subtext: {
+    fontSize: 14,
+  },
+  progressContainer: {
+    backgroundColor: '#f2f2f2',
+    padding: 12,
+    borderRadius: 12,
+    marginBottom: 20,
+  },
+  progressLabel: {
+    fontSize: 14,
+    color: '#888',
+  },
+  progressTime: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 4,
+  },
   progressBarBackground: {
+    width: '100%',
     height: 10,
-    backgroundColor: '#eee',
+    backgroundColor: '#ddd',
     borderRadius: 5,
     overflow: 'hidden',
   },
   progressBarFill: {
-    width: '76%',
+    width: '75%',
     height: '100%',
-    backgroundColor: '#4c6ef5',
+    backgroundColor: '#4f46e5',
   },
-
-  // Shared Card Styling
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-
-  // Start Learning Card
   startCard: {
-    backgroundColor: '#e0f0ff',
-    borderRadius: 12,
-    padding: 20,
-    marginVertical: 20,
+    backgroundColor: '#c7d2fe',
+    padding: 16,
+    borderRadius: 16,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    marginBottom: 24,
   },
-  illustrationPlaceholder: {
-    width: 120,
-    height: 80,
-    backgroundColor: '#cce0ff',
-    borderRadius: 10,
-    marginBottom: 10,
+  cardImage: {
+    width: 100,
+    height: 100,
+    marginBottom: 12,
+    resizeMode: 'contain',
   },
-  cardTitle: { fontSize: 16, fontWeight: '600', marginBottom: 8, textAlign: 'center' },
-  getStarted: { color: '#007bff', fontWeight: 'bold' },
-
-  // Learning Plan
-  learningPlan: { marginVertical: 20 },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 6,
+    textAlign: 'center',
+  },
+  getStarted: {
+    color: '#2563eb',
+    fontWeight: 'bold',
+  },
+  learningPlan: {
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 12,
+  },
   planItemCard: {
+    backgroundColor: '#f9fafb',
+    padding: 12,
+    borderRadius: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#f7f7f7',
-    padding: 12,
-    borderRadius: 10,
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    marginBottom: 8,
   },
-  planText: { fontSize: 14 },
-  planProgress: { fontSize: 14, fontWeight: 'bold', color: '#333' },
-
-  // Meetup card
+  planText: {
+    fontSize: 16,
+  },
+  planProgress: {
+    fontSize: 14,
+    color: '#6b7280',
+  },
   meetupCard: {
-    backgroundColor: '#f9e0ff',
-    borderRadius: 12,
-    padding: 20,
-    marginBottom: 30,
+    backgroundColor: '#ede9fe',
+    padding: 16,
+    borderRadius: 16,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    marginBottom: 30,
   },
-  illustrationPlaceholderSmall: {
+  meetupImage: {
     width: 100,
-    height: 60,
-    backgroundColor: '#e9caff',
-    borderRadius: 10,
-    marginBottom: 10,
+    height: 100,
+    marginBottom: 12,
+    resizeMode: 'contain',
   },
-  meetupTitle: { fontSize: 16, fontWeight: '600' },
-  meetupSubtitle: { fontSize: 13, color: '#555', textAlign: 'center' },
-
-  // Bottom Navigation
+  meetupTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  meetupSubtitle: {
+    fontSize: 14,
+    textAlign: 'center',
+    color: '#4b5563',
+  },
   bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-    paddingTop: 12,
-    marginTop: 20,
-    paddingBottom: 10,
+    paddingVertical: 12,
+    backgroundColor: '#f3f4f6',
+    borderRadius: 16,
   },
-  navItem: { fontSize: 13, color: '#666' },
+  navItem: {
+    fontSize: 14,
+  },
 });

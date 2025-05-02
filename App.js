@@ -2,7 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './Screens/HomeScreen'; 
+import HomeScreen from './Screens/HomeScreen';
+
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -10,6 +12,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import Slider from '@react-native-community/slider';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const categories = ['Design', 'Painting', 'Coding', 'Music', 'Visual Identity', 'Mathematics'];
 const durations = ['3-8 Hours', '8-14 Hours', '14-20 Hours', '20-24 Hours', '24-30 Hours'];
@@ -12,9 +14,7 @@ export default function App() {
     const [price, setPrice] = useState(50);
     const [selectedDuration, setSelectedDurations] = useState(null);
   
-    const handleClose = () => {
-      setModalVisible(false);
-    };
+  const navigation=useNavigation();
   
     const toggleCategory = (category) => {
       if (selectedCategories.includes(category)) {
@@ -47,8 +47,8 @@ export default function App() {
           <View style={styles.cloudBackground}/>
           <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
             {/* X Button */}
-            <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-            <EvilIcons name="close" size={24} color="black" />
+            <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.closeButton}>
+              <EvilIcons name="close" size={34} color="black"  />
             </TouchableOpacity>
 
             {/* Title */}

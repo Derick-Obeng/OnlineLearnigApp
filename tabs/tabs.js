@@ -70,8 +70,11 @@ const TabButton = (props) => {
 function RootStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
             <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
+            <Stack.Screen name="CourseScreen" component={CourseScreen} />
+
+            <Stack.Screen name="CourseFilterScreen" component={CourseFilterScreen} />
+
         </Stack.Navigator>
     )
 }

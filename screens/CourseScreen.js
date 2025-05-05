@@ -6,7 +6,7 @@ import Navbar from '../components/CourseNavBar';
 
 export default function Course() {
   return (   
-    <GestureHandlerRootView>
+    <GestureHandlerRootView >
       <Header/>
       <Activities/>
       <Navbar /> 

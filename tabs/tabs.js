@@ -18,7 +18,7 @@ import CourseFilterScreen from '../screens/CourseFilterScreen';
 const TabArr = [
     { route: 'Home', label: 'Home', type: Icons.Octicons, icon: 'home', component: HomeScreen },
     { route: 'Course', label: 'Course', type: Icons.FontAwesome, icon: 'book', component: CourseScreen },
-    { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: CourseFilterScreen },
+    { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: SearchScreen },
     { route: 'Message', label: 'Message', type: Icons.MaterialCommunityIcons, icon: 'message-text-outline', component: MessageScreen },
     { route: 'Account', label: 'Account', type: Icons.MaterialCommunityIcons, icon: 'account', component: AccountScreen },
 ];
@@ -75,6 +75,7 @@ function RootStack() {
 
             <Stack.Screen name="CourseFilterScreen" component={CourseFilterScreen} />
 
+            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
         </Stack.Navigator>
     )
 }

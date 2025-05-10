@@ -2,7 +2,7 @@ import { StyleSheet, Text, View,Image } from 'react-native';
 import React from 'react';
 
 
-const logoImg = require('../assets/avatar.png');
+// const logoImg = require('../assets/avatar.png');
 
 const MessageScreen = () => {
   return (
@@ -12,8 +12,8 @@ const MessageScreen = () => {
       <View style = {styles.secondview}>
         <Text style = {styles.name}>Bert Pullman</Text>
         <Text style = {styles.onlineText }> Online </Text>
-        <Image source = {logoImg} 
-              style = {styles.avatar}/>
+        {/* <Image source = {logoImg} 
+              style = {styles.avatar}/> */}
 
       </View>
     </View>

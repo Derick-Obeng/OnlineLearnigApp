@@ -1,18 +1,14 @@
-import React from 'react';
-import Header from '../components/header';
-import Activities from '../components/Activities';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Navbar from '../components/CourseNavBar';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 
-export default function Course() {
-  return (   
-    <GestureHandlerRootView>
-      <Header/>
-      <Activities/>
-      <Navbar /> 
-  </GestureHandlerRootView>
-  );
+const CourseScreen = () => {
+  return (
+    <View>
+      <Text>CourseScreen</Text>
+    </View>
+  )
 }
 
+export default CourseScreen
 
-
+const styles = StyleSheet.create({})

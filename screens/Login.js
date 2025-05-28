@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   head: {
     padding: 70,
     backgroundColor:'#ddd' ,
-    marginBottom:20
+    marginBottom:30
     
     
   },

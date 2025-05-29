@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View ,StatusBar, TextInput,Image } from 'react-native';
 import Button from '../components/Button';
+import Entypo from '@expo/vector-icons/Entypo';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function Login({navigation}) {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.head}>
-        <Text style= {styles.header}>Log in</Text>
+        <Text style= {styles.header}>Login</Text>
        
       </View>
      
@@ -17,7 +21,14 @@ export default function Login({navigation}) {
 
       <View style={styles.password}>
         <Text style={styles.passText}>Password</Text>
-         <TextInput style={styles.secondInput}/>
+         
+        
+      </View>
+
+      <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 20, marginBottom: 20, borderWidth: 1, borderColor:'gray', borderRadius: 10,width: 320}}>
+        <TextInput style={styles.secondInput} secureTextEntry={!showPassword} />
+        <Entypo name={showPassword ? 'eye-with-line' : "eye"} size={24} color="black" onPress={() => setShowPassword(!showPassword)} 
+          style={styles.eye}/>
       </View>
 
       <View>
@@ -43,8 +54,10 @@ export default function Login({navigation}) {
          
       </View>
 
-      <Image source={require('../assets/google.jpeg')} style={{width: 40, height: 40, marginLeft: 100, marginTop: 20}} />
+      <Image source={require('../assets/google.jpeg')} style={{width: 40, height: 40, marginLeft: 130, marginTop: 20}} />
       <Image source={require('../assets/facebook.jpeg')} style={{width: 50, height: 70, marginLeft: 200, marginTop: -50}} />
+
+      
     </View>
   );
 }
@@ -60,6 +73,9 @@ const styles = StyleSheet.create({
     marginBottom:30
     
     
+  },
+  eye:{
+    marginRight: 30,
   },
   textHolder: {
     backgroundColor: "white",
@@ -77,7 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   
-   marginRight:40
+    textAlign: 'center',
   },
   input: {
     height: 40,
@@ -104,13 +120,8 @@ const styles = StyleSheet.create({
   },
   secondInput: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
     paddingLeft: 10,
-    width: 200,
-     width: 320,
-    marginLeft:10,
+    width:'88%',
     borderRadius: 10,
   },
   passText: {

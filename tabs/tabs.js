@@ -12,6 +12,7 @@ import { useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import CourseScreen from '../screens/CourseScreen';
+import Login from '../screens/Login';
 
 
 
@@ -69,8 +70,9 @@ const TabButton = (props) => {
 
 function RootStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Login'>
             {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
+            <Stack.Screen name= 'Login' component={Login} options={{headerShown: false}}/>
             <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
